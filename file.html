@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Pilihan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: left;
+            width: 80%; /* Lebar kontainer 80% dari lebar layar */
+            max-width: 600px;
+        }
+        .menu-heading {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .menu-item label {
+            font-weight: bold;
+            flex: 1;
+        }
+        .qty-input {
+            width: 40px;
+            text-align: center;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        #total {
+            font-weight: bold;
+            font-size: 24px;
+            margin-top: 20px;
+            color: green;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="menu-heading">Menu Pilihan</h1>
+        <br>
+        <h2>Makanan</h2>
+        <div class="menu-item">
+            <label for="makanan1">Makanan 1</label><h3>Rp. 2000</h3>
+            <input type="number" id="makanan1" class="qty-input" value="0">
+        </div>
+        <div class="menu-item">
+            <label for="makanan2">Makanan 2</label><h3>Rp. 2000</h3>
+            <input type="number" id="makanan2" class="qty-input" value="0">
+        </div>
+        <h2>Minuman</h2>
+        <div class="menu-item">
+            <label for="minuman1">Minuman 1 </label><h3>Rp. 2000</h3>
+            <input type="number" id="minuman1" class="qty-input" value="0">
+        </div>
+        <div class="menu-item">
+            <label for="minuman2">Minuman 2 </label><h3>Rp. 2000</h3>
+            <input type="number" id="minuman2" class="qty-input" value="0">
+        </div>
+        <div>
+            <h2 class="menu-heading">Total:</h2>
+            <p id="total">RP. 0</p>
+        </div>
+    </div>
+
+    <script>
+        const makanan1 = document.getElementById("makanan1");
+        const makanan2 = document.getElementById("makanan2");
+        const minuman1 = document.getElementById("minuman1");
+        const minuman2 = document.getElementById("minuman2");
+        const totalElement = document.getElementById("total");
+
+        const updateTotal = () => {
+            const makanan1Value = parseInt(makanan1.value) * 2000;
+            const makanan2Value = parseInt(makanan2.value) * 5000;
+            const minuman1Value = parseInt(minuman1.value) * 3000;
+            const minuman2Value = parseInt(minuman2.value) * 6000;
+
+            const total = makanan1Value + makanan2Value + minuman1Value + minuman2Value;
+            totalElement.textContent = `RP. ${total}`;
+        };
+
+        makanan1.addEventListener("input", updateTotal);
+        makanan2.addEventListener("input", updateTotal);
+        minuman1.addEventListener("input", updateTotal);
+        minuman2.addEventListener("input", updateTotal);
+    </script>
+</body>
+</html>
